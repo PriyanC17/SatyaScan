@@ -31,6 +31,20 @@ This project aims to develop a robust AI/ML model capable of authenticating face
 
 The output of the platform includes a detailed report indicating whether the video is authentic or deep fake. The report will detail the abnormalities observed in the video and provide insights into the techniques used for deep fake creation.
 
-## Installation
 
-1. Clone the repository: git clone 
+## Usage
+
+1. Upload the video suspected of being a deep fake.
+2. Click the "Analyze" button.
+3. Review the generated report to determine the authenticity of the video.
+4. Visit the Learning Page to understand more about deep fakes.
+5. Check the Latest Updates page for the newest information on deep fake technology.
+
+## Contributing
+
+We welcome contributions from the community! Please feel free to fork the repository and submit pull requests for new features, bug fixes, or any improvements.
+
+## License
+
+This project is licensed under the MIT License.
+
