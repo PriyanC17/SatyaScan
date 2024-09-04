@@ -3,10 +3,16 @@ import { motion } from 'framer-motion';
 import {  } from 'react-icons/fa';
 import  { useState } from 'react';
 import { Camera, Video, Mic } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 
 const DeepLearn = () => {
   const [activeTab, setActiveTab] = useState('image');
+  const navigate = useNavigate();
+
+  const goToDetectPage = () => {
+    navigate('/DeepLearn');
+  };
+
   return (
     <>
 
@@ -15,7 +21,7 @@ const DeepLearn = () => {
     {/* Left side: Logo */}
     <div className="flex items-center">
       <img
-        src="https://via.placeholder.com/50x50?text=Logo"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4AiZ2vu67jP70-IkkA24VgbxNJm5llUlpCvxJSbQfHTnNgUSAQpMb9-pOo4y1JOT6N1k&usqp=CAU"
         alt="Logo"
         className="w-12 h-12 rounded-full"
       />
@@ -24,14 +30,14 @@ const DeepLearn = () => {
 
     {/* Right side: Navigation links and buttons */}
     <div className="flex items-center space-x-8">
-      <button className="relative font-semibold py-2 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 shadow-lg transition-all duration-300">
+      <button onClick={goToDetectPage} className="relative font-semibold py-2 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 shadow-lg transition-all duration-300">
         Generate Deep-Fakes
       </button>
       <a href="#about" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
         About Us
         <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></span>
       </a>
-      <a href="#resources" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
+      <a href="\Research" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
         Resources
         <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></span>
       </a>

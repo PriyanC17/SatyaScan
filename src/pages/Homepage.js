@@ -1,8 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Importing new fonts
 
+
 function HomePage() {
+  const navigate = useNavigate();
+
+  const goToDetectPage = () => {
+    navigate('/DeepLearn');
+  };
+
   return (
     <>
      
@@ -11,7 +19,7 @@ function HomePage() {
     {/* Left side: Logo */}
     <div className="flex items-center">
       <img
-        src="https://via.placeholder.com/50x50?text=Logo"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4AiZ2vu67jP70-IkkA24VgbxNJm5llUlpCvxJSbQfHTnNgUSAQpMb9-pOo4y1JOT6N1k&usqp=CAU"
         alt="Logo"
         className="w-12 h-12 rounded-full"
       />
@@ -20,14 +28,14 @@ function HomePage() {
 
     {/* Right side: Navigation links and buttons */}
     <div className="flex items-center space-x-8">
-      <button className="relative font-semibold py-2 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 shadow-lg transition-all duration-300">
+      <button onClick={goToDetectPage} className="relative font-semibold py-2 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 shadow-lg transition-all duration-300">
         Generate Deep-Fakes
       </button>
       <a href="#about" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
         About Us
         <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></span>
       </a>
-      <a href="#resources" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
+      <a href="\Research" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
         Resources
         <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></span>
       </a>
@@ -58,7 +66,7 @@ function HomePage() {
             <p className="text-2xl mb-8 max-w-2xl mx-auto bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent animate-fade-in-up">
               Protect your content and identity with our advanced deepfake detection platform. Spot manipulated media and ensure authenticity.
             </p>
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold py-5 px-8 rounded-full shadow-lg transform transition duration-400 ease-in-out hover:scale-105 hover:from-blue-500 hover:to-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-opacity-50">
+            <button onClick={goToDetectPage}  className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold py-5 px-8 rounded-full shadow-lg transform transition duration-400 ease-in-out hover:scale-105 hover:from-blue-500 hover:to-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-opacity-50">
               Start Detecting Now
             </button>
           </div>
@@ -115,42 +123,49 @@ function HomePage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                <img
-                  src="https://via.placeholder.com/400x200?text=News+1"
-                  alt="News 1"
-                  className="w-full h-48 object-cover rounded mb-4"
-                />
+                <a href='https://moneyweek.com/personal-finance/celebrity-ad-scams'>
+                  <img
+                    src="https://cdn.mos.cms.futurecdn.net/cFHAn9E6n65LsUGu4aQZZT-1600-80.jpg.webp"
+                    alt="News 1"
+                    className="w-full h-48 object-cover rounded mb-4"
+                  />
+                </a>
                 <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-blue-400 bg-clip-text text-transparent">
                   Celebrity Impersonation Scandal
                 </h3>
                 <p className="text-gray-300">
-                  A deepfake video of a famous actor was used in a scam to defraud fans, showcasing the serious risks of manipulated media.
+                  Millions lost in celebrity ad scams impersonating Elon Musk, Taylor Swift and others.
                 </p>
               </div>
               <div className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                <img
-                  src="https://via.placeholder.com/400x200?text=News+2"
-                  alt="News 2"
-                  className="w-full h-48 object-cover rounded mb-4"
-                />
+                <a href="https://www.technologyreview.com/2020/02/19/868173/an-indian-politician-is-using-deepfakes-to-try-and-win-voters/">
+                  <img
+                    src="https://duet-cdn.vox-cdn.com/thumbor/0x0:1056x643/828x552/filters:focal(498x312:499x313):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/19728097/indian_politician.jpg"
+                    alt="News 2"
+                    className="w-full h-48 object-cover rounded mb-4"
+                  />
+                </a>
                 <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-cyan-400 bg-clip-text text-transparent">
                   Political Deepfake Creates Chaos
                 </h3>
                 <p className="text-gray-300">
-                  A deepfake video of a politician sparked controversy and unrest, highlighting the potential dangers of misinformation in politics.
+                  An Indian politician - president of India’s ruling Bharatiya Janata Party (BJP), Manoj Tiwari, is using deepfake technology to win new voters.
                 </p>
               </div>
               <div className="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                <img
-                  src="https://via.placeholder.com/400x200?text=News+3"
-                  alt="News 3"
-                  className="w-full h-48 object-cover rounded mb-4"
-                />
+                <a href="https://www.forbes.com/sites/jessedamiani/2019/09/03/a-voice-deepfake-was-used-to-scam-a-ceo-out-of-243000/">
+                  <img
+                    src="https://strapi.abhandshake.com/uploads/BLOG_1200x628_10_1_78287768cd.jpg"
+                    alt="News 3"
+                    className="w-full h-48 object-cover rounded mb-4"
+                  />
+                </a>
+                
                 <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-pink-600 to-red-400 bg-clip-text text-transparent">
                   Financial Fraud with AI-Generated Voices
                 </h3>
                 <p className="text-gray-300">
-                  A deepfake audio clip was used to impersonate a CEO, leading to significant financial losses for the targeted company.
+                  A Voice Deepfake Was Used To Scam A CEO Out Of $243,000.
                 </p>
               </div>
             </div>
@@ -161,26 +176,26 @@ function HomePage() {
         <section className="py-20 bg-gradient-to-r from-purple-900 to-indigo-800 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold mb-10 bg-gradient-to-r from-yellow-300 to-pink-500 bg-clip-text text-transparent">
-              Our Achievements
+               Major Breakthrough
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                <h3 className="text-4xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-                  10K+
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+                  RNNs and LSTM
                 </h3>
-                <p>Happy Clients Worldwide</p>
+                <p>Advanced Temporal Anomaly Detection</p>
               </div>
               <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                <h3 className="text-4xl font-bold bg-gradient-to-r from-blue-300 to-indigo-500 bg-clip-text text-transparent">
-                  50+
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-300 to-indigo-500 bg-clip-text text-transparent">
+                  ResNeXt CNN
                 </h3>
-                <p>Expert Team Members</p>
+                <p>High-Precision Feature Extraction</p>
               </div>
               <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105">
-                <h3 className="text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                  1M+
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+                  Immutable Records
                 </h3>
-                <p>Deepfake Detections Completed</p>
+                <p>Blockchain-Backed Authenticity Verification</p>
               </div>
             </div>
           </div>
