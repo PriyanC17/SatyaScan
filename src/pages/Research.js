@@ -34,7 +34,7 @@ const Research = () => {
       <button onClick={goToDetectPage} className="relative font-semibold py-2 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 shadow-lg transition-all duration-300">
         Generate Deep-Fakes
       </button>
-      <a href="#about" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
+      <a href="\HomePage" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
         About Us
         <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></span>
       </a>
