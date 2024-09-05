@@ -6,7 +6,7 @@ import AboutUs from './pages/AboutUs';
 import DeepLearn from './pages/DeepLearn';
 import Research from './pages/Research';
 import HomePage from './pages/HomePage';
-
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -16,7 +16,8 @@ function App() {
         <Routes>
         <Route path='/' element={<HomePage />} />
           <Route path='/about' element={<AboutUs />} />
-         
+          <Route path='/Login' element={<Login />} />
+
           <Route path='/deepLearn' element={<DeepLearn />} />
           <Route path='/research' element={<Research />} />
         </Routes>
