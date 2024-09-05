@@ -4,14 +4,23 @@ import { } from 'react-icons/fa';
 import { useState } from 'react';
 import { Camera, Video, Mic } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { useEffect } from 'react';
 
 
 
+=======
+import LoadingBar from './LoadingBar'; 
+>>>>>>> 25709e08bb09c9dc03f230a657b7f267d8a094e1
 
 const DeepLearn = () => {
   const [activeTab, setActiveTab] = useState('image');
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = () => {
+    setIsLoading(true); // Start the loading bar
+  };
 
   const goToDetectPage = () => {
     navigate('/DeepLearn');
@@ -42,6 +51,7 @@ const DeepLearn = () => {
             <span className="ml-3 text-2xl font-bold tracking-wide bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">Satya-Scan</span>
           </div>
 
+<<<<<<< HEAD
           {/* Right side: Navigation links and buttons */}
           <div className="flex items-center space-x-8">
             <button onClick={goToDetectPage} className="relative font-semibold py-2 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 shadow-lg transition-all duration-300">
@@ -59,9 +69,74 @@ const DeepLearn = () => {
               Sign Up
             </button>
           </div>
+=======
+    {/* Right side: Navigation links and buttons */}
+    <div className="flex items-center space-x-8">
+      <button onClick={goToDetectPage} className="relative font-semibold py-2 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 shadow-lg transition-all duration-300">
+        Generate Deep-Fakes
+      </button>
+      <a href="\HomePage" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
+        About Us
+        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></span>
+      </a>
+      <a href="\Research" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
+        Resources
+        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></span>
+      </a>
+      <button className="relative font-semibold py-2 px-6 rounded-full border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white transition-colors duration-300 shadow-lg">
+        Sign Up
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+<div className="min-h-screen p-40 bg-gradient-to-r from-gray-900 via-black to-gray-900 text-gray-200 font-roboto">
+      <div className="container mx-auto px-6 py-12">
+        {/* Tabs Navigation */}
+        <div className="flex justify-center space-x-6 mb-8">
+          <button
+            className={`flex items-center py-3 px-6 font-semibold text-lg transition-transform duration-300 ${
+              activeTab === 'image'
+                ? 'border-b-4 border-pink-500 text-pink-500 transform scale-105'
+                : 'text-gray-400 hover:text-pink-500'
+            }`}
+            onClick={() => setActiveTab('image')}
+          >
+            <Camera className="mr-2" size={24} />
+            Image
+          </button>
+          <button
+            className={`flex items-center py-3 px-6 font-semibold text-lg transition-transform duration-300 ${
+              activeTab === 'video'
+                ? 'border-b-4 border-pink-500 text-pink-500 transform scale-105'
+                : 'text-gray-400 hover:text-pink-500'
+            }`}
+            onClick={() => setActiveTab('video')}
+          >
+            <Video className="mr-2" size={24} />
+            Video
+          </button>
+          <button
+            className={`flex items-center py-3 px-6 font-semibold text-lg transition-transform duration-300 ${
+              activeTab === 'audio'
+                ? 'border-b-4 border-pink-500 text-pink-500 transform scale-105'
+                : 'text-gray-400 hover:text-pink-500'
+            }`}
+            onClick={() => setActiveTab('audio')}
+          >
+            <Mic className="mr-2" size={24} />
+            Audio
+          </button>
+>>>>>>> 25709e08bb09c9dc03f230a657b7f267d8a094e1
         </div>
       </nav>
 
+<<<<<<< HEAD
 
 
 
@@ -148,6 +223,62 @@ const DeepLearn = () => {
               </div>
             )}
           </div>
+=======
+        {/* Input Container */}
+        <div className="relative bg-white/10 backdrop-blur-md p-12 rounded-2xl shadow-2xl transition-all duration-500 transform  hover:shadow-4xl max-w-3xl mx-auto">
+          {activeTab === 'image' && (
+            <div className="animate-fade-in">
+              <h2 className="text-3xl font-bold mb-4 text-gray-100 flex items-center">
+                <Camera className="mr-3 text-pink-500" size={28} />
+                Upload an Image
+              </h2>
+              <input
+                type="file"
+                accept="image/*"
+                className="w-full p-4 border border-gray-500 rounded-lg bg-gray-800 text-gray-300 placeholder-gray-500"
+              />
+              <p className="mt-2 text-sm text-gray-400">Accepted formats: JPG, PNG, GIF</p>
+            </div>
+          )}
+          {activeTab === 'video' && (
+            <div className="animate-fade-in">
+              <h2 className="text-3xl font-bold mb-4 text-gray-100 flex items-center">
+                <Video className="mr-3 text-pink-500" size={28} />
+                Upload a Video
+              </h2>
+              <input
+                type="file"
+                accept="video/*"
+                className="w-full p-4 border border-gray-500 rounded-lg bg-gray-800 text-gray-300 placeholder-gray-500"
+              />
+              <p className="mt-2 text-sm text-gray-400">Accepted formats: MP4, AVI, MOV</p>
+            </div>
+          )}
+          {activeTab === 'audio' && (
+            <div className="animate-fade-in">
+              <h2 className="text-3xl font-bold mb-4 text-gray-100 flex items-center">
+                <Mic className="mr-3 text-pink-500" size={28} />
+                Upload an Audio File
+              </h2>
+              <input
+                type="file"
+                accept="audio/*"
+                className="w-full p-4 border border-gray-500 rounded-lg bg-gray-800 text-gray-300 placeholder-gray-500"
+              />
+              <p className="mt-2 text-sm text-gray-400">Accepted formats: MP3, WAV, AAC</p>
+            </div>
+          )}
+          <div className="flex justify-between items-center mt-6">
+              <button 
+                onClick={handleSubmit} 
+                className="font-semibold py-2 px-6 rounded-lg border border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white transition-colors duration-300 shadow-lg"
+              >
+                Submit
+              </button>
+              
+              <LoadingBar isLoading={isLoading} />
+            </div>
+>>>>>>> 25709e08bb09c9dc03f230a657b7f267d8a094e1
         </div>
       </div>
 

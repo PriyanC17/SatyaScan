@@ -3,9 +3,15 @@ body {
   
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
   /*font-family: 'Orbitron', sans-serif; */
   /* font-family: 'Michroma', sans-serif; */
   font-family: 'Exo', sans-serif; 
+=======
+  /* font-family: 'Orbitron', sans-serif; */
+  /* font-family: 'Michroma', sans-serif; */
+  font-family: 'Exo', sans-serif;
+>>>>>>> 25709e08bb09c9dc03f230a657b7f267d8a094e1
 }
 
 code {
