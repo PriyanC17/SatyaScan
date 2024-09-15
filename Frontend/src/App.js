@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
+import Navbar from './components/Navbar';
 import AboutUs from './pages/AboutUs';
 import DeepLearn from './pages/DeepLearn';
 import Research from './pages/Research';

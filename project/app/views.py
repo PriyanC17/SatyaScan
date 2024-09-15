@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from rest_framework.permissions import AllowAny
 from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.permissions import IsAuthenticated
 
 # rest_framework: DRF modules to handle HTTP requests and responses.
 # RefreshToken: Part of django-rest-framework-simplejwt used for handling JSON Web Tokens (JWT) for authentication.
@@ -60,3 +61,18 @@ def LoginView(request):
         }, status=status.HTTP_200_OK)
     else:
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+    
+
+# Check user status 
+@csrf_exempt
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_user_status(request):
+    auth_header = request.headers.get('Authorization')
+    print(f"Authorization header received: {auth_header}")
+    if request.user.is_authenticated:
+        print("User Status ",request.user.is_authenticated)
+        return Response({"isAuthenticated": True, "username": request.user.username})
+    else:
+        print("User Status ",request.user.is_authenticated)
+        return Response({"isAuthenticated": False})

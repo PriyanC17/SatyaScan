@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import app from '../axiosConfig';
 import { User, Lock, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { getValidToken } from '../tokenHelper';
+import Navbar from '../components/Navbar';
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -13,30 +15,53 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const checkUserStatus = async () => {
+    try {
+      const token = await getValidToken();
+      
+      const response = await app.get('user-status/', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      
+      if (response.data.isAuthenticated) {
+        setMessage(`Welcome back, ${response.data.username}`);
+      } else {
+        setMessage('User is not authenticated');
+      }
+    } catch (error) {
+      console.error('Error checking user status:', error);
+      setMessage('Error checking user status');
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (isSignUp) {
       try {
-        const response = await axios.post('http://localhost:8000/app/register/', {
+        const response = await app.post('register/', {
           username: formData.name,
           email: formData.email,
           password: formData.password,
         });
         setMessage(response.data.success);
-        setIsSignUp(false);
+        setIsSignUp(false); // Switch back to login after successful sign-up
       } catch (error) {
         setMessage(error.response?.data?.error || 'Sign-up failed');
       }
     } else {
       try {
-        const response = await axios.post('http://localhost:8000/app/login/', {
+        const response = await app.post('login/', {
           email: formData.email,
           password: formData.password,
         });
+        
         localStorage.setItem('access_token', response.data.access);
         localStorage.setItem('refresh_token', response.data.refresh);
+        
         setMessage('Login successful!');
-        navigate('/'); // Redirect to the home page
+        await checkUserStatus(); // Check user status after successful login
+        navigate('/'); // Redirect to home page
       } catch (error) {
         setMessage(error.response?.data?.error || 'Login failed');
       }
@@ -44,43 +69,10 @@ const Login = () => {
   };
   
 
+
   return (
     <>
-      {/* Navigation and other components */}
-
-      <nav className="fixed top-0 left-0 w-screen z-50 bg-transparent text-white">
-        {/* Navbar content */}
-        <div className="container mx-auto flex justify-between items-center px-6 py-4 backdrop-blur-md bg-white/10 border-b border-white/20 rounded-lg">
-          <div className="flex items-center">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4AiZ2vu67jP70-IkkA24VgbxNJm5llUlpCvxJSbQfHTnNgUSAQpMb9-pOo4y1JOT6N1k&usqp=CAU"
-              alt="Logo"
-              className="w-12 h-12 rounded-full"
-            />
-            <span className="ml-3 text-2xl font-bold tracking-wide bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">
-              Satya-Scan
-            </span>
-          </div>
-
-          {/* Right side: Navigation links and buttons */}
-          <div className="flex items-center space-x-8">
-            <button onClick={() => navigate('/DeepLearn')} className="relative font-semibold py-2 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-pink-600 hover:to-purple-600 shadow-lg transition-all duration-300">
-              Generate Deep-Fakes
-            </button>
-            <a href="#about" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
-              About Us
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></span>
-            </a>
-            <a href="/Research" className="relative font-semibold text-lg py-2 transition-colors duration-300 hover:text-pink-500">
-              Resources
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100"></span>
-            </a>
-            <button className="relative font-semibold py-2 px-6 rounded-full border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white transition-colors duration-300 shadow-lg">
-              Sign Up
-            </button>
-          </div>
-        </div>
-      </nav>
+    <Navbar />
 
       <div className="min-h-screen p-5 bg-gradient-to-r from-gray-900 via-black to-gray-900 text-gray-200 font-roboto flex items-center justify-center relative overflow-hidden">
         {/* Animated Background Circles */}
